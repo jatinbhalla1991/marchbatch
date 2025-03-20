@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        MY_CRED = credentials('d9aa2571-f5d7-47c4-b3d7-375fbcd719a4')
+        MY_CRED = credentials('azuresp')
     }
     stages {
         stage('Checkout') {
