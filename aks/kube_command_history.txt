@@ -1,0 +1,35 @@
+git clone https://jatinbhalla180056@dev.azure.com/jatinbhalla180056/octintellipat/_git/AKS
+cd aks
+docker-compose -f docker-compose.ci.build.yml up
+docker-compose -f docker-compose.yml build
+docker login -u jatinbhallaoct -p VfVodncufpQqxcan03lF/NtdaABNnURWvV1yOtmAz2+ACRDBhRix jatinbhallaoct.azurecr.io
+docker-compose -f docker-compose.yml push
+ az account set --subscription 9112ff5f-1a9e-411d-b35f-4ec8bd46878a
+az login
+az aks get-credentials --resource-group akshandsonlab --name jatinbhallaoct --overwrite-existing
+  kubectl apply -f mhc-aks.yaml
+  kubectl get pod
+kubectl get services
+  kubectl get pod
+kubectl log mhc-front-6fcdc5c8d7-zqbt6
+kubectl logs mhc-front-6fcdc5c8d7-zqbt6
+  kubectl get pod
+kubectl delete mhc-front-6fcdc5c8d7-zqbt6
+kubectl delete pod mhc-front-6fcdc5c8d7-zqbt6
+  kubectl get pod
+kubectl get deployments
+kubectl inspect mhc-back-bf6d8657c-kbh4h
+kubectl describe pod mhc-back-bf6d8657c-kbh4h
+kubectl list namespaces
+kubectl get namespaces
+kubectl get pods
+kubectl get pods -namespace default
+kubectl get pods -n default
+kubectl get pods -n kube-node-lease
+kubectl get pods -n kube-public
+kubectl get pods -n kube-system
+kubectl get deployments
+kubectl edit mhc-front
+kubectl edit deployment mhc-front
+kubectl get pods -n default
+doskey /history > kube_command_history.txt

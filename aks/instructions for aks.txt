@@ -1,0 +1,51 @@
+azure and azure devops hands on acitvity for ask cluster
+
+1. got through steps mentioned in this acitvity https://www.azuredevopslabs.com/labs/vstsextend/kubernetes/
+2 create the resources through commands mentioned in the actvitiy example
+
+
+to create resource group:
+az group create --name akshandsonlab --location eastus
+
+to create aks cluster:
+az aks create --resource-group akshandsonlab --name jatinbhallaoct --enable-addons monitoring --kubernetes-version  1.29.2 --generate-ssh-keys --location eastus
+
+to create acr:
+az acr create --resource-group akshandsonlab --name jatinbhallaoct --sku Standard --location eastus
+
+to create authentication
+az aks update -n jatinbhallaoct -g akshandsonlab --attach-acr jatinbhallaoct
+
+to create sql server:
+ az sql server create -l eastus -g akshandsonlab -n jatinbhallaoct -u sqladmin -p P2ssw0rd1234
+
+to create sql db
+az sql db create -g akshandsonlab -s jatinbhallaoct -n mhcdb --service-objective S0
+
+
+
+
+3. alter the files
+------- mhc-aks.yaml
+------- Change app settings.json in directory /src/MyHealth.Web Input sql server name,user name and password
+------- docker-compose.yml
+
+4. run below commands after altering with your values for execution from laptop
+
+docker-compose -f docker-compose.ci.build.yml up
+
+docker-compose -f docker-compose.yml build
+
+docker login -u jatinbhalla -p vUDIHpPpGGtO9GD3RxmVGE7vxjl6zNmxbC/RvbV9qu+ACRAh4x/c acrnew1234.azurecr.io
+
+docker-compose -f docker-compose.yml push
+az account set --subscription 9112ff5f-1a9e-411d-b35f-4ec8bd46878a
+az login
+az account set --subscription 9112ff5f-1a9e-411d-b35f-4ec8bd46878a
+az aks get-credentials --resource-group akshandsonlab --name aks1
+kubectl apply -f mhc-aks.yaml
+kubectl get po
+kubectl get service mhc-front --watch
+
+docker login -u jatinbhalla -p 0JdFXPYKnMrnQ+k4A2bFUnedo3W9aDgLof5TZWSziN+ACRCENoyU acrnew1234.azurecr.io
+
