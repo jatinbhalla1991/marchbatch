@@ -1,0 +1,13 @@
+You work for TechGiants Software. Recently the company got funding and they have decided to expand their server fleet. You have been designated the task for Configuration Management.
+
+Assume the following infrastructure:
+
+1. 1 Nginx Server
+2. 1 Apache Server
+3. 1 Puppet Master 
+
+On Apache Server, we have to install docker. And on the nginx server, we have to install Java. It sounds straightforward, but we do not know, which systems have what softwares installed on it.
+
+Using conditional statements, accomplish the above task.
+
+Also, for improving code readability, please make use of modules and classes.

@@ -1,0 +1,7 @@
+You have been hired as a Devops Engineer in GrapeVine Pvt. Ltd. You have been asked to improve the way the company is managing their Docker containers. Following tasks have been assigned:
+
+1. Deploy a sample HTML website in any apache container, and demonstrate how we can dynamically change content in the container by making changes on the host machine ( Bind Mounts)
+
+2. Deploy apache and nginx containers using Docker Compose, Apache should be exposed on Port 91 and nginx on port 92
+
+3. Initialize a Docker Swarm Cluster, and deploy two ubuntu containers in a overlay network. Demonstrate they can communicate with each other, by pinging them

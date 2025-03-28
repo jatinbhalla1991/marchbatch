@@ -95,7 +95,7 @@ spec:
 
       - name: mhc-front
 
-        image: jatinbhallaoct.azurecr.io/myhealth.web:latest
+        image: demoacrjb.azurecr.io/myhealth.web:latest
 
         imagePullPolicy: Always
 
